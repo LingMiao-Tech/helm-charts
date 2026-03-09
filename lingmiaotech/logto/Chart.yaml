@@ -1,6 +1,27 @@
+# LingMiaoTech Images Helm chart for Logto
+#
 apiVersion: v2
 name: logto
-description: A Helm chart for Kubernetes
+
+annotations:
+  images: |
+    - name: logto
+      image: docker.io/svhd/logto:latest
+  licenses: MIT License
+
+description: Logto is the modern, open-source auth infrastructure for SaaS and AI apps.
+  It takes the pain out of OIDC and OAuth 2.1 and makes it easy to build secure, 
+  production-ready auth with multi-tenancy, enterprise SSO, and RBAC.
+home: https://github.com/LingMiao-Tech/helm-charts
+icon: "null"
+keywords:
+- logto
+- authentication
+maintainers:
+- name: LingMiaoTech
+  url: https://github.com/LingMiao-Tech
+sources:
+- https://github.com/LingMiao-Tech/helm-charts/tree/main/lingmiaotech/logto
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -21,4 +42,4 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "1.16.0"
+appVersion: "latest"
