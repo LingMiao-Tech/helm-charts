@@ -42,8 +42,26 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: {{ .Values.service.ports.http }}
               protocol: TCP
+            - name: admin
+              containerPort: {{ .Values.service.ports.admin }}
+              protocol: TCP
+          env:
+            - name: TRUST_PROXY_HEADER
+              value: {{ .Values.logto.trustProxyHeader | quote }}
+            # TODO: Add support for secret-db
+            - name: DB_URL
+              value: {{ .Values.logto.dbUrl | quote }}
+            # - name: DB_URL
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: {{ .Values.externalPostgresql.existingSecret | default (printf "%s-db" (include "logto.fullname" .)) }}
+            #       key: db-url
+            - name: ENDPOINT
+              value: {{ .Values.logto.endpoint | quote }}
+            - name: ADMIN_ENDPOINT
+              value: {{ .Values.logto.adminEndpoint | quote }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}

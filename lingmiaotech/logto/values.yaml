@@ -62,21 +62,26 @@ service:
 logto:
   # Trust proxy headers for reverse proxy setups
   trustProxyHeader: true
+  # TODO: Support for external databases other than PostgreSQL
   # External PostgreSQL configuration
-  externalPostgresql:
-    # Database host
-    host: ""
-    # Database port
-    port: 5432
-    # Database name
-    database: logto
-    # Database username
-    username: postgres
-    # Database password
-    password: ""
-    # Use an existing secret for the database URL
-    # The secret should contain a key named 'db-url'
-    existingSecret: ""
+  # Example: 
+  #   dbUrl: "postgresql://user:password@host:port/database"
+  dbUrl: ""
+  # externalPostgresql:
+  #   # Database host
+  #   host: ""
+  #   # Database port
+  #   port: 5432
+  #   # Database name
+  #   database: logto
+  #   # Database username
+  #   username: postgres
+  #   # Database password
+  #   password: ""
+  #   # Use an existing secret for the database URL
+  #   # The secret should contain a key named 'db-url'
+  #   # TODO: Add support for secret-db
+  #   existingSecret: ""
   # Public endpoint URL (e.g., https://logto.example.com)
   endpoint: ""
   # Admin endpoint URL (e.g., https://logto-admin.example.com)
